@@ -4,14 +4,17 @@
       .myHeading {
         color: red;
       }
+
+      .selected {
+        color: blue;
+      }
     </style>
   </head>
+
   <body>
     <div id="firstDiv">
-      <h1 onclick="makeItClickable(event, 'blue')">
-        This is the title of the page
-      </h1>
-      <h2>This is the subtitle of the page</h2>
+      <h1>This is the title of the page</h1>
+      <h2 onclick="makeItClickable()">This is the subtitle of the page</h2>
     </div>
 
     <div>
@@ -40,13 +43,14 @@
           type="text"
           id="input-field"
           placeholder="input field for the exercise"
+          onkeyup="getElementById(event)"
         />
       </div>
     </div>
 
     <div>
       <p>And this text is just for the exercise too!</p>
-      <h2 style="color: red">
+      <h2 style="color: red" onclick="changeFooterText(event)">
         Save this page on your computer and open it with VSCode to get the
         questions!
       </h2>
@@ -56,11 +60,11 @@
        Write a function for changing the title of the document in something else.
       */
 
-      const changeTitle = function () {
-        let newTitle = document.getElementsByTagName("h1");
-        newTitle[0].innerText = "This is the new title!";
+      const changeTitle = function (newTitle) {
+        let newHeader = document.getElementsByTagName("h1");
+        newHeader[0].innerText = newTitle;
       };
-      changeTitle();
+      changeTitle("This is the new title!");
 
       /* EXERCISE 2
        Write a function for changing the class of the title of the page in "myHeading".
@@ -78,7 +82,7 @@
 
       const changePcontent = function () {
         let newPNode = document.getElementsByTagName("p");
-        for (eachPNode of newPNode) {
+        for (let eachPNode of newPNode) {
           eachPNode.innerText = "This is the new P node!";
         }
       };
@@ -89,8 +93,11 @@
       */
 
       const changeUrls = function () {
-        let newLink = document.getElementsByTagName("a");
-        newLink[0].innerText = "https://www.google.com";
+        let allLinks = document.getElementsByTagName("a");
+        for (let i = 0; i < allLinks.length; i++) {
+          let newLink = allLinks[i];
+          newLink.href = "https://www.google.com";
+        }
       };
       changeUrls();
 
@@ -100,23 +107,23 @@
 
       const addToTheSecond = function (content) {
         let newList = document.createElement("li");
-        newList.innerText = "This is the new list!";
+        newList.innerText = content;
         let addNewList = document.getElementById("secondList");
         addNewList.appendChild(newList);
       };
-      addToTheSecond();
+      addToTheSecond("This is the new list!");
 
       /* EXERCISE 6
        Write a function for adding a second paragraph to the first div.
       */
 
       const addParagraph = function (content) {
-        let newParagraph = document.createElement("h2");
-        newParagraph.innerText = "This is the second paragraph!";
+        let newParagraph = document.createElement("p");
+        newParagraph.innerText = content;
         let addNewParagraph = document.getElementById("firstDiv");
         addNewParagraph.appendChild(newParagraph);
       };
-      addParagraph();
+      addParagraph("This is the second paragraph!");
 
       /* EXERCISE 7
        Write a function for making the first unordered list disappear.
@@ -143,18 +150,18 @@
        Make the heading of the page change color every time the user clicks on it.
       */
 
-      const makeItClickable = function (event, color) {
-        let clickTitle = event.target;
-        clickTitle.style.color = color;
+      const makeItClickable = function () {
+        let clickTitle = document.querySelector("h2");
+        clickTitle.classList.toggle("selected");
       };
-      makeItClickable();
 
       /* EXERCISE 10
        Change the footer text with something else when the user clicks on it.
       */
 
-      const changeFooterText = function () {
-        //
+      const changeFooterText = function (event) {
+        let clickFooter = event.target;
+        clickFooter.innerText = "I changed the text for ex.10!";
       };
 
       /* EXERCISE 11
@@ -162,14 +169,14 @@
       */
 
       const inputField = document.getElementById("input-field");
-      // ...
+      let keystroke = input.keystroke;
+      inputField();
 
       /* EXERCISE 12
        Create a welcome alert message when the page successfully loads.
       */
-
       window.onload = function () {
-        //
+        console.log("Hi, welcome");
       };
 
       /* EXERCISE 13

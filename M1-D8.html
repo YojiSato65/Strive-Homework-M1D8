@@ -124,14 +124,18 @@
         let disapperList = document.getElementById("firstList");
         disapperList.style.display = "none";
       };
-      firstUlDisappear();
+      // firstUlDisappear();
+
       /* EXERCISE 8
        Write a function for making the background of every unordered list green.
       */
 
       const paintItGreen = function () {
-        //
+        let changeBackgroundColour = document.getElementsByTagName("ul");
+        for (greenBackground of changeBackgroundColour)
+          greenBackground.style.backgroundColor = "green";
       };
+      paintItGreen();
 
       /* EXERCISE 9
        Make the heading of the page change color every time the user clicks on it.

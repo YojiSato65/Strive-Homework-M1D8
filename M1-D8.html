@@ -7,7 +7,7 @@
     </style>
   </head>
   <body>
-    <div>
+    <div id="firstDiv">
       <h1>This is the title of the page</h1>
       <h2>This is the subtitle of the page</h2>
     </div>
@@ -56,58 +56,75 @@
 
       const changeTitle = function () {
         let newTitle = document.getElementsByTagName("h1");
-        newTitle[0].innerText = "This is a new title";
+        newTitle[0].innerText = "This is a new title!";
       };
-      console.log(changeTitle());
+      changeTitle();
 
       /* EXERCISE 2
        Write a function for changing the class of the title of the page in "myHeading".
       */
 
       const addClassToTitle = function () {
-        //
+        let newTitleToMyHeading = document.getElementsByTagName("h1");
+        newTitleToMyHeading[0].classList.add("myHeading");
       };
+      addClassToTitle();
 
       /* EXERCISE 3
        Write a function for changing the text of only the p which are children of a div.
       */
 
       const changePcontent = function () {
-        //
+        let newPNode = document.getElementsByTagName("p");
+        for (eachPNode of newPNode) {
+          eachPNode.innerText = "This is a new P node!";
+        }
       };
+      changePcontent();
 
       /* EXERCISE 4
        Write a function for changing the href property of every link to https://www.google.com
       */
 
       const changeUrls = function () {
-        //
+        let newLink = document.getElementsByTagName("a");
+        newLink[0].innerText = "https://www.google.com";
       };
+      changeUrls();
 
       /* EXERCISE 5
        Write a function for adding a new list item in the second unordered list.
       */
 
       const addToTheSecond = function (content) {
-        //
+        let newList = document.createElement("li");
+        newList.innerText = "This is a new list!";
+        let addNewList = document.getElementById("secondList");
+        addNewList.appendChild(newList);
       };
+      addToTheSecond();
 
       /* EXERCISE 6
        Write a function for adding a second paragraph to the first div.
       */
 
       const addParagraph = function (content) {
-        //
+        let newParagraph = document.createElement("h2");
+        newParagraph.innerText = "This is a second paragraph!";
+        let addNewParagraph = document.getElementById("firstDiv");
+        addNewParagraph.appendChild(newParagraph);
       };
+      addParagraph();
 
       /* EXERCISE 7
        Write a function for making the first unordered list disappear.
       */
 
       const firstUlDisappear = function () {
-        //
+        let disapperList = document.getElementById("firstList");
+        disapperList.style.display = "none";
       };
-
+      firstUlDisappear();
       /* EXERCISE 8
        Write a function for making the background of every unordered list green.
       */
